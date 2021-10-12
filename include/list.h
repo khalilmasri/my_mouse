@@ -19,8 +19,19 @@ typedef struct map_s
     int **visited; // 2D array of ints
     int x_size; // x_size of the map
     int y_size; // y_size of the map
+    int start[2];
+    int end[2];
     int size; // size of the map
 } char_map;
+
+typedef struct steps_l{
+    int x_curr;
+    int y_curr;
+    int y_prev;
+    int x_prev;
+    int layer;
+    struct steps_l *next;
+}steps;
 
 #endif
 //-----------------------------------------------------------------------------------------------
@@ -28,6 +39,7 @@ typedef struct map_s
 #ifndef MY_MOUSE_H
 #define MY_MOUSE_H
 
+char_map *my_mouse(char_map*);
 
 #endif
 //-----------------------------------------------------------------------------------------------
@@ -35,10 +47,10 @@ typedef struct map_s
 #ifndef READ_MAP_H
 #define READ_MAP_H
 
-char_map read_map_size(char*);
+char_map *read_map_size(char*);
 int get_info_size(char*);
-char_map read_map_into_array(char*, char_map);
-char_map initialize_visited(char_map);
+char_map *read_map_into_array(char*, char_map*);
+char_map *initialize_visited(char_map*);
 
 #endif
 //-----------------------------------------------------------------------------------------------
@@ -47,8 +59,9 @@ char_map initialize_visited(char_map);
 #define UTILITY_H
 
 long my_atoi(char*, int);
-void free_char_map(char_map);
-void print_char_map(char_map);
-void print_visited_map(char_map);
+void free_char_map(char_map*);
+void print_char_map(char_map*);
+void print_visited_map(char_map*);
+void print_list(steps*);
 
 #endif
