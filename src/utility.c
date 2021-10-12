@@ -16,40 +16,60 @@ long my_atoi(char *number_string, int size)
     return res;
 }
 
-void free_char_map(char_map map)
+void free_char_map(char_map *map)
 {
     int i;
-    for (i = 0; i < map.x_size; i++)
+    for (i = 0; i < map->x_size; i++)
     {
-        free(map.map[i]);
-        //free(map.visited[i]);
+        free(map->map[i]);
+        free(map->visited[i]);
     }
-    free(map.map);
-    //free(map.visited);
+    free(map->map);
+    free(map->visited);
 }
 
-void print_char_map(char_map map)
+void print_char_map(char_map *map)
 {
     int i, j;
-    for (i = 0; i < map.x_size; i++)
+    for (i = 0; i < map->x_size; i++)
     {
-        for (j = 0; j < map.y_size; j++)
+        for (j = 0; j < map->y_size; j++)
         {
-            printf("%c", map.map[i][j]);
+            printf("%c", map->map[i][j]);
         }
         printf("\n");
     }
 }
 
-void print_visited_map(char_map map)
+void print_visited_map(char_map *map)
 {
     int i, j;
-    for (i = 0; i < map.x_size; i++)
+    for (i = 0; i < map->x_size; i++)
     {
-        for (j = 0; j < map.y_size; j++)
+        for (j = 0; j < map->y_size; j++)
         {
-            printf("%d", map.visited[i][j]);
+            printf("%d", map->visited[i][j]);
         }
         printf("\n");
     }
 }
+
+void print_list(steps *ptr)
+{
+    steps *temp = ptr;
+
+    if (!temp)
+        printf("list is empty");
+    while (temp)
+    {
+        printf("%d  ", temp->layer);
+        printf("%d  ", temp->x_curr);
+        printf("%d  ", temp->y_curr);
+        printf("%d  ", temp->x_prev);
+        printf("%d  ", temp->y_prev);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+
