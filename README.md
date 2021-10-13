@@ -96,8 +96,12 @@ treatment.
    ****2*****
    10 STEPS!
    ```
-4. You can clean up '.o' files by typing the following command after usage
+4. In the case of wrong map file type input or a map without the correct dimensions descriptor at the first line (e.g if not this format "100x100* o12") error messages will be displayed notifying the user. 
+ 
+5. You can clean up '.o' files by typing the following command after usage
     ```sh
    'make clean'
    ```
+   
+
 
