@@ -1,21 +1,5 @@
 #include "../include/list.h"
 
-long my_atoi(char *number_string, int size)
-{
-    int index = 0;
-    long res = 0;
-    while (index < size && number_string[index])
-    {
-        if (number_string[index] >= '0' && number_string[index] <= '9')
-        {
-            res *= 10;
-            res += number_string[index] - '0';
-        }
-        index++;
-    }
-    return res;
-}
-
 void free_char_map(char_map *map)
 {
     int i;
