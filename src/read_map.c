@@ -24,7 +24,6 @@ char_map *read_map_size(char* map_file, char_map *map)
     }
 
     map->size = map->x_size * map->y_size;
-    printf("Map dims = x: %d y: %d, size: %d\n", map->x_size, map->y_size, map->size);
     return map;
 }
 
@@ -40,9 +39,7 @@ int get_info_size(char *map_file)
         i++;
     }
     line[i] = '\0';
-    //printf("firstline: %s\n", line);
     close(fd);
-    //printf("first line size: %lu\n", strlen(line));
     return strlen(line);
 }
 
