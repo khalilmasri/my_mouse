@@ -46,27 +46,31 @@ steps* check_available(char_map *map, steps *head, int x, int y, int layer)
 {
 
     int added = 0;
+    //check below
     if(map->map[x+1][y] != '*' && map->visited[x+1][y] == 0){
         map->visited[x+1][y] = 1;
         head = add_node(head, x+1, y, x, y, layer); 
         added++;
-   }
+    }
+    //check above
     if(map->map[x-1][y] != '*' && map->visited[x-1][y] == 0){
         map->visited[x-1][y] = 1;
         head = add_node(head, x-1, y, x, y, layer); 
         added++;
     }
+    //check right
     if(map->map[x][y+1] != '*' && map->visited[x][y+1] == 0){
         map->visited[x][y+1] = 1;
         head = add_node(head, x, y+1, x, y, layer); 
         added++;
     }
+    //check left
     if(map->map[x][y-1] != '*' && map->visited[x][y-1] == 0){
         map->visited[x][y-1] = 1;
         head = add_node(head, x, y-1, x, y, layer); 
         added++;
     }
-    printf("added node: %d\n", added);
+    printf("count of nodes added to list at check: %d\n", added);
     return head;
 }
 
@@ -79,21 +83,22 @@ char_map *my_mouse(char_map *map)
     int x_prev = map->start[0];
     int y_prev = map->start[1];
     int layer = 0;
-    //int ret = 0;
     int x_curr = x_prev + 1;
     int y_curr = y_prev;
 
-    //add start node to linked list
+    //set as visited & add start node to linked list
+    map->visited[x_curr][y_curr] = 1;
     head = add_node(head, x_curr, y_curr, x_prev, y_prev, layer);
+    
+    //NEED TO FIGURE LOOP LOGIC FOR CHECKING AVAILABLE NODES FROM HERE
+
+    //a test of checking available around the first node
     head = check_available(map, head, x_curr, y_curr, layer + 1);
-
-
-
-    //get start node
-    map = get_start(map);
-    //condition
-    // check_avaiable(map, list, x, y);
+    
+    printf("linked list contents:\n");
     print_list(head);
+    //check if visited has been altered after checking node
+    print_visited_map(map);
     free_list(head);
     return map;
 }
