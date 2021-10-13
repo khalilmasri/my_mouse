@@ -1,31 +1,31 @@
 #include "../include/list.h"
 
-char_map *read_map_size(char* map_file)
+char_map *read_map_size(char* map_file, char_map *map)
 {
+    
     int i = 0;
-    char_map *char_map = malloc(sizeof(char_map));
     char map_dims[MAP_DIMS] = "**********"; //cant fill with 0's because would y_size value
     int fd = open(map_file, O_RDONLY);
     read(fd, map_dims, MAP_DIMS);
-    char_map->y_size = 0;
-    char_map->x_size = 0;
+    map->y_size = 0;
+    map->x_size = 0;
     map_dims[strlen(map_dims) - 1] = '\0';
     //get x and y dimensions
     while(map_dims[i] != 'x')
     {
-            char_map->x_size = char_map->x_size * 10 + (map_dims[i] - '0');
+            map->x_size = map->x_size * 10 + (map_dims[i] - '0');
             i++;
     }
     i++;
     while(map_dims[i] != '*')
     {
-            char_map->y_size = char_map->y_size * 10 + (map_dims[i] - '0');
+            map->y_size = map->y_size * 10 + (map_dims[i] - '0');
             i++;
     }
 
-    char_map->size = char_map->x_size * char_map->y_size;
-    printf("Map dims = x: %d y: %d, size: %d\n", char_map->x_size, char_map->y_size, char_map->size);
-    return char_map;
+    map->size = map->x_size * map->y_size;
+    printf("Map dims = x: %d y: %d, size: %d\n", map->x_size, map->y_size, map->size);
+    return map;
 }
 
 //function to read size of first line in file

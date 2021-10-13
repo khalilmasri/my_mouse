@@ -62,14 +62,24 @@ void print_list(steps *ptr)
         printf("list is empty");
     while (temp)
     {
-        printf("%d  ", temp->layer);
-        printf("%d  ", temp->x_curr);
-        printf("%d  ", temp->y_curr);
-        printf("%d  ", temp->x_prev);
-        printf("%d  ", temp->y_prev);
+        printf("layer: %d, ", temp->layer);
+        printf("x_curr: %d, ", temp->x_curr);
+        printf("y_curr: %d, ", temp->y_curr);
+        printf("x_prev: %d, ", temp->x_prev);
+        printf("y_prev: %d\n", temp->y_prev);
         temp = temp->next;
     }
     printf("\n");
 }
 
+void free_list(steps *ptr)
+{
+    steps *temp;
 
+    while (ptr != NULL)
+    {
+        temp = ptr;
+        ptr = ptr->next;
+        free(temp);
+    }
+}
