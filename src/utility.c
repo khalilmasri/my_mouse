@@ -54,6 +54,33 @@ void print_visited_map(char_map *map)
     }
 }
 
+bool check_valid_info(int fd){
+    int i = 0,
+        number_y = 0,
+        number_x = 0;
+    char buffer[MAP_INFO];
+
+    read(fd, buffer, MAP_INFO);
+    buffer[14] = '\0';
+
+    while(buffer[i] != 'x' && buffer[i] != '\0'){
+            number_x = number_x * 10 + (buffer[i] - '0');
+            i++;
+    }
+    if(buffer[i] != 'x') return false;
+    i++;
+    while(buffer[i] != '*' && buffer[i] != '\0'){
+            number_y = number_y * 10 + (buffer[i] - '0');
+            i++;
+    }
+
+    if(number_y >= 1000 || number_x >= 1000 || buffer[i] != '*') return false;
+
+    if(buffer[i] == ' ' && buffer[i+1] == 'o' && buffer[i+2] == '1' && buffer[i+3] == '2') return false;
+
+    return true;
+}
+
 void print_list(steps *ptr)
 {
     steps *temp = ptr;
