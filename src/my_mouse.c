@@ -69,7 +69,6 @@ steps* check_available(char_map *map, steps *head, int x, int y)
         head = add_node(head, x-1, y, x, y); 
         added++;
     }
-    //printf("count of nodes added to list at check: %d\n", added);
     return head;
 }
 
@@ -92,6 +91,9 @@ steps *reverse_list(steps *head)
 char_map *draw_path(char_map *map, steps *head, int x, int y)
 {
     steps *temp = head;
+
+    int counter = 0;
+
     while(temp)
     {
         if(temp->x_curr == x && temp->y_curr == y)
@@ -99,6 +101,7 @@ char_map *draw_path(char_map *map, steps *head, int x, int y)
             if(map->map[x][y] != '2')
             {
                 map->map[x][y] = 'o';
+                counter++;
             }
             x = temp->x_prev;
             y = temp->y_prev;
@@ -109,6 +112,9 @@ char_map *draw_path(char_map *map, steps *head, int x, int y)
             temp = temp->next;
         }
     }
+
+    map->steps = counter;
+
     return map;
 }
 
@@ -137,8 +143,6 @@ char_map *my_mouse(char_map *map)
     }    
     head = reverse_list(head);
     map = draw_path(map, head, temp->x_curr, temp->y_curr);
-    // printf("linked list contents:\n");
-    // print_list(head);
     free_list(head);
     return map;
 }
