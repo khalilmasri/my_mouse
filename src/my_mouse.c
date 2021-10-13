@@ -98,6 +98,7 @@ char_map *my_mouse(char_map *map)
     printf("linked list contents:\n");
     print_list(head);
     //check if visited has been altered after checking node
+    printf("visited array contents:\n");
     print_visited_map(map);
     free_list(head);
     return map;
