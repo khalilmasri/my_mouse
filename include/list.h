@@ -63,7 +63,6 @@ char_map *initialize_visited(char_map*);
 #ifndef UTILITY_H
 #define UTILITY_H
 
-long my_atoi(char*, int);
 void free_char_map(char_map*);
 void print_char_map(char_map*);
 void print_visited_map(char_map*);
