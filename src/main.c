@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
         //print maps
         print_char_map(map);
-        print_visited_map(map);
+        //print_visited_map(map);
         map = my_mouse(map);
         free_char_map(map); //segfaults no idea why
 

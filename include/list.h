@@ -29,7 +29,7 @@ typedef struct steps_l{
     int y_curr;
     int y_prev;
     int x_prev;
-    int layer;
+    //int layer;
     struct steps_l *next;
 }steps;
 
@@ -40,8 +40,8 @@ typedef struct steps_l{
 #define MY_MOUSE_H
 
 char_map *get_start(char_map*);
-steps* add_node(steps*, int, int, int, int, int); 
-steps* check_available(char_map*, steps*, int, int, int);
+steps* add_node(steps*, int, int, int, int); 
+steps* check_available(char_map*, steps*, int, int);
 char_map *my_mouse(char_map*);
 
 #endif
