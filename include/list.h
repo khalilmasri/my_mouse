@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 #define MAP_DIMS 10 //1000x1000* would be max dimensions
-#define MAP_INFO 14 //1000x1000* o12 would be max first line
+#define MAP_INFO 15 //1000x1000* o12 would be max first line
 
 //-----------------------------------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ typedef struct map_s
     int x_size; // x_size of the map
     int y_size; // y_size of the map
     int start[2];
-    int end[2];
+    int steps;
     int size; // size of the map
 } char_map;
 
@@ -69,6 +69,7 @@ void print_char_map(char_map*);
 void print_visited_map(char_map*);
 void print_list(steps*);
 void free_list(steps*);
+bool check_valid_info(int);
 
 #endif
 //-----------------------------------------------------------------------------------------------
