@@ -42,6 +42,8 @@ typedef struct steps_l{
 char_map *get_start(char_map*);
 steps* add_node(steps*, int, int, int, int); 
 steps* check_available(char_map*, steps*, int, int);
+steps *reverse_list(steps*);
+char_map *draw_path(char_map*, steps*, int, int);
 char_map *my_mouse(char_map*);
 
 #endif

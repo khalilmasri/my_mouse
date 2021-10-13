@@ -14,12 +14,16 @@ int main(int argc, char **argv)
         map = read_map_size(argv[1], map);
         map = read_map_into_array(argv[1], map);
 
-        //print maps
+        //print input map
+        printf("input map\n");
+        print_char_map(map);
+        //run algorithm
+        map = my_mouse(map);
+        //print map with path
+        printf("shortest path:\n");
         print_char_map(map);
         //print_visited_map(map);
-        map = my_mouse(map);
-        free_char_map(map); //segfaults no idea why
-
+        free_char_map(map);
     }
 
     return 0;

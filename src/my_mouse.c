@@ -73,10 +73,48 @@ steps* check_available(char_map *map, steps *head, int x, int y)
     return head;
 }
 
+steps *reverse_list(steps *head) 
+{
+    steps *new_head = NULL, *current = head;
+
+    // Reverse the link list O(n) time O(1) space
+    while(current)
+    {
+        head = head->next;
+        current->next = new_head;
+        new_head = current;
+        current = head;
+    }
+
+    return new_head;
+}
+
+char_map *draw_path(char_map *map, steps *head, int x, int y)
+{
+    steps *temp = head;
+    while(temp)
+    {
+        if(temp->x_curr == x && temp->y_curr == y)
+        {
+            if(map->map[x][y] != '2')
+            {
+                map->map[x][y] = 'o';
+            }
+            x = temp->x_prev;
+            y = temp->y_prev;
+            temp = temp->next;
+        }
+        else
+        {
+            temp = temp->next;
+        }
+    }
+    return map;
+}
+
 //function to find shortest path through map
 char_map *my_mouse(char_map *map)
 {
-    //get pointer to head of linked list
     steps *head = NULL;
     steps *temp = NULL;
     
@@ -86,34 +124,21 @@ char_map *my_mouse(char_map *map)
     int x_curr = x_prev + 1;
     int y_curr = y_prev;
 
-    //set as visited & add start node to linked list
-    map->visited[x_curr][y_curr] = 1;
+    map->visited[x_curr][y_curr] = 1; //set as visited & add start node to linked list
     head = add_node(head, x_curr, y_curr, x_prev, y_prev);
-    head = check_available(map, head, x_curr, y_curr);
     temp = head;
     
-    while(map->map[temp->x_curr][temp->y_curr] != '2')//(temp->next->layer == layer)
+    while(map->map[temp->x_curr][temp->y_curr] != '2')
     {
         x_curr = temp->x_curr;
         y_curr = temp->y_curr;
         head = check_available(map, head, x_curr, y_curr);
         temp = temp->next;
-    }
-
-
-    printf("SHORTEST PATH FOUND!!!\n");
-    printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr);
-    
-    //Function here to go back through the linked list from the end to show path
-
-    
-    printf("linked list contents:\n");
-    print_list(head);
-    //check if visited has been altered after checking node
-    printf("visited array contents:\n");
-    print_visited_map(map);
-    printf("SHORTEST PATH FOUND!!!\n");
-    printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr);
+    }    
+    head = reverse_list(head);
+    map = draw_path(map, head, temp->x_curr, temp->y_curr);
+    // printf("linked list contents:\n");
+    // print_list(head);
     free_list(head);
     return map;
 }
