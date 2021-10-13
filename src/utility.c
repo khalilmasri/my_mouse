@@ -74,11 +74,11 @@ bool check_valid_info(int fd){
             i++;
     }
 
-    if(number_y >= 1000 || number_x >= 1000 || buffer[i] != '*') return false;
+    if(number_y > 1000 || number_x > 1000 || buffer[i] != '*') return false;
+    i++;
+    if(buffer[i] == ' ' && buffer[i+1] == 'o' && buffer[i+2] == '1' && buffer[i+3] == '2') return true;
 
-    if(buffer[i] == ' ' && buffer[i+1] == 'o' && buffer[i+2] == '1' && buffer[i+3] == '2') return false;
-
-    return true;
+    return false;
 }
 
 void print_list(steps *ptr)
