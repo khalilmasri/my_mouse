@@ -72,13 +72,13 @@ treatment.
 1. From the terminal move to my_mouse directory and run the generate_map.rb ruby script with the following command using whatever x + y dimensions you want and followed by "* o12" (this sets the edges and obstacles as * and the start and exit as 1 and 2 respectively. 
 
    ```sh
-   ruby generate_map.rb [x] [y] "* o12" > [filename].[map/txt]
-   e.g 'ruby generate_map.rb 50 20 "* o12" > 01.map'
+   ruby map/generate_map.rb [x] [y] "* o12" > [filename].[map/txt]
+   e.g 'ruby map/generate_map.rb 50 20 "* o12" > map/01.map'
    ```
 2. Compile the C program by typing 'make' into the terminal and run the program from terminal with the program name followed by the filename of your generated map
 
    ```sh
-   e.g './my_mouse 01.map'
+   e.g './my_mouse map/01.map'
    ```
 3. Your map will be printed with the map parameters above in the terminal with o's denoting the shortest path through the map and below it the number of steps it took.
 
