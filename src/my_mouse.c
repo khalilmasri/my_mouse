@@ -101,19 +101,20 @@ char_map *my_mouse(char_map *map)
     }
 
 
-    printf("SHORTEST PATH FOUND!!!\n");
-    printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr);
+    /* printf("SHORTEST PATH FOUND!!!\n"); */
+    /* printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr); */
     
-    //Function here to go back through the linked list from the end to show path
+    /* //Function here to go back through the linked list from the end to show path */
 
     
-    printf("linked list contents:\n");
-    print_list(head);
-    //check if visited has been altered after checking node
-    printf("visited array contents:\n");
+    /* printf("linked list contents:\n"); */
+    /* print_list(head); */
+    /* //check if visited has been altered after checking node */
+    /* printf("visited array contents:\n"); */
     print_visited_map(map);
-    printf("SHORTEST PATH FOUND!!!\n");
-    printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr);
+    /* printf("SHORTEST PATH FOUND!!!\n"); */
+    /* printf("EXIT AT X: %d Y: %d\n", temp->x_curr, temp->y_curr); */
+    rewrite_map(map, temp->y_curr, temp->x_curr);
     free_list(head);
     return map;
 }

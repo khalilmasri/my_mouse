@@ -69,3 +69,11 @@ void print_list(steps*);
 void free_list(steps*);
 
 #endif
+//-----------------------------------------------------------------------------------------------
+	
+#ifndef REWRITE_H
+#define REWRITE_H
+
+void rewrite_map(char_map*, int, int);
+
+#endif

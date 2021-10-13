@@ -1,12 +1,11 @@
 CC = gcc
 
-CFLAGS += -Wall -Wextra -Werror 
+CFLAGS += -Wall -Wextra  
 
 DEPS += include/list.h
 
 OBJFILES = src/main.o src/read_map.o src/utility.o\
-						src/my_mouse.o #tar_extract.o\
-						#tar_append.o tar_update.o tar_list.o
+						src/my_mouse.o src/rewrite_map.c\
 
 
 TARGET = my_mouse
