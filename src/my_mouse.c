@@ -145,7 +145,6 @@ char_map *my_mouse(char_map *map)
             break;
         }
     }
-    print_list(head);
     if(temp != NULL)
     {   
         head = reverse_list(head); 

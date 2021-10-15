@@ -39,7 +39,7 @@ int check_valid_map(char_map *map, char* map_file)
         buffer[map->y_size] = '\0';
         while(j < map->y_size)
         {
-            if(buffer[j] != ' ' && buffer[j] != '*' && buffer[j] != '1' & buffer[j] != '2')
+            if(buffer[j] != ' ' && buffer[j] != '*' && buffer[j] != '1' && buffer[j] != '2')
                 return 1; //if map not made up of valid characters
             if(buffer[j] == '1')
                 entry++;
@@ -147,13 +147,3 @@ char_map *initialize_visited(char_map *map)
     }
     return map;
 }
-
-
-
-
-
-
-
-
-
-
