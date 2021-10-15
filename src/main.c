@@ -30,11 +30,17 @@ int main(int argc, char **argv)
 
         map = read_map_into_array(argv[1], map);
 
-        map = my_mouse(map);
+        if((map = my_mouse(map)) == NULL)
+        {
+            printf("MAP ERROR: No Path To Exit!\n");
+            return 1;
+        }
+        else
+        {
         print_char_map(map);
         printf("%d STEPS!\n", map->steps);
         free_char_map(map);
+        }
     }
-
     return 0;
 }

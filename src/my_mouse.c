@@ -134,15 +134,26 @@ char_map *my_mouse(char_map *map)
     head = add_node(head, x_curr, y_curr, x_prev, y_prev);
     temp = head;
     
-    while(map->map[temp->x_curr][temp->y_curr] != '2')
+    while(map->map[temp->x_curr][temp->y_curr] != '2' && temp != NULL)
     {
         x_curr = temp->x_curr;
         y_curr = temp->y_curr;
         head = check_available(map, head, x_curr, y_curr);
         temp = temp->next;
-    }    
-    head = reverse_list(head);
-    map = draw_path(map, head, temp->x_curr, temp->y_curr);
-    free_list(head);
-    return map;
+        if(temp == NULL)
+        {
+            break;
+        }
+    }
+    print_list(head);
+    if(temp != NULL)
+    {   
+        head = reverse_list(head); 
+        map = draw_path(map, head, temp->x_curr, temp->y_curr); 
+        free_list(head);
+        return map;
+    }
+    free_char_map(map); //free map before returning it as NULL!
+    free_list(head);    //free linked list in both cases!!
+    return NULL;
 }
