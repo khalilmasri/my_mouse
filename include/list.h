@@ -31,7 +31,7 @@ typedef struct steps_l{
     int x_prev;
     //int layer;
     struct steps_l *next;
-}steps;
+} steps;
 
 #endif
 //-----------------------------------------------------------------------------------------------
@@ -52,8 +52,10 @@ char_map *my_mouse(char_map*);
 #ifndef READ_MAP_H
 #define READ_MAP_H
 
+int check_valid_info(int);
+int check_valid_map(char_map*, char*);
 char_map *read_map_size(char*, char_map*);
-int get_info_size(char*);
+char* get_info(char*);
 char_map *read_map_into_array(char*, char_map*);
 char_map *initialize_visited(char_map*);
 
@@ -68,7 +70,6 @@ void print_char_map(char_map*);
 void print_visited_map(char_map*);
 void print_list(steps*);
 void free_list(steps*);
-bool check_valid_info(int);
 
 #endif
 //-----------------------------------------------------------------------------------------------
